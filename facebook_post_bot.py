@@ -9,18 +9,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-text = 'There will be text'
-picture = 'post.jpg'
 path = os.getenv('SELENIUM_PATH')
 email = os.getenv('LOGIN')
 password = os.getenv('PASSWORD')
-
 
 groups = ['367975614070885'] #,'2631785523616117']
 
 driver = webdriver.Chrome(path)
 driver.get('https://m.facebook.com')
-time.sleep(2)
+time.sleep(1)
 
 def login(email, password):
     '''Login function'''
@@ -51,9 +48,7 @@ def post(link, picture):
     input_field.click()
     time.sleep(5)
 
-    load_image = driver.find_element(By.XPATH,'//div[text()="Світлина"]')
-    time.sleep(1)
-    driver.send_keys(os.getcwd()+"/image.png")
+    driver.find_element(By.XPATH,'//*[@id="uniqid_1"]').send_keys(os.getcwd()+"/image.png")
     time.sleep(1)
     
     text_area = driver.find_element(By.XPATH,'//*[@id="uniqid_1"]')
